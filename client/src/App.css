@@ -1,0 +1,9 @@
+@media screen and (min-width: 750px) {
+    .BountyTiles {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .Bounty {
+        width: 400px;
+    }
+}
