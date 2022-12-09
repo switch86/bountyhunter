@@ -6,8 +6,8 @@ export default function AddBounty(props) {
         name: props.name || "",
         isLiving: true,
         amount: props.amount || 500,
-        type: props.type || "",
-        _id: props._id || "", 
+        type: props.type || ""
+
     }
     const [newBounty, setNewBounty] = useState(initBounty)
     function handleChange(event) {

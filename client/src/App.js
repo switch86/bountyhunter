@@ -37,7 +37,16 @@ function App() {
       .then(res => setBountyArray(prevArray => prevArray.map(prev => prev._id !== bountyId ? prev : res.data)))
       .catch(err => console.log(err))
   }
+  function handleFilter(e) {
+    if (e.target.value === "reset") {
+      getBounty()
+    } else {
+      axios.get(`/bounty/search/type?type=${e.target.value}`)
+        .then(res => setBountyArray(res.data))
+        .catch(err => console.log(err))
 
+    }
+  }
   const bountyHTML = bountyArray.map(bounty => {
     return (
       <Bounty 
@@ -54,6 +63,13 @@ function App() {
           submit={addBounty}
           btnText="Add Bounty"
          />
+         <h4>Filter by Type</h4>
+         <select onChange={handleFilter} className="filterForm">
+          <option value="reset"> - Select a Type</option>
+          <option value="water">Water</option>
+          <option value="fire">Fire</option>
+          <option value="grass">Grass</option>
+         </select>
       <div className="BountyTiles">
       {bountyHTML}
       </div>
