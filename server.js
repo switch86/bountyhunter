@@ -1,4 +1,3 @@
-const {v4: uuidv4} = require('uuid')
 const express = require("express")
 const app = express()
 const morgan = require("morgan")
@@ -7,6 +6,7 @@ const Bounty = require("./models/bounty")
 
 app.use(express.json())
 app.use(morgan('dev'))
+
 
 // connect to Database
 mongoose.connect('mongodb://localhost:27017/bountydb', 
@@ -105,7 +105,7 @@ app.get("/bounty/search/type/", (req, res) => {
 //     res.send(arr2)
 // })
 
-app.delete("/bounty/:bountyId", (req, res) => {
+app.delete("/bounty/:bountyId", (req, res, next) => {
     Bounty.findOneAndDelete({_id: req.params.bountyId}, (err, deletedItem) => {
         if (err) {
             res.status(500)
