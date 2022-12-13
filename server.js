@@ -10,15 +10,10 @@ app.use(morgan('dev'))
 
 // connect to Database
 mongoose.connect('mongodb://localhost:27017/bountydb', 
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
-        // useCreateIndex: true,
-        // useFindAndModify: false
      () => console.log('connected to database')
     )
 
-// const bounty = []
-//     {
+
 //         region: "US",
 //         name: "Bulbasaur",
 //         isLiving: true,
