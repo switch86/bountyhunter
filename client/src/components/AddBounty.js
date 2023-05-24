@@ -7,7 +7,6 @@ export default function AddBounty(props) {
         isLiving: true,
         amount: props.amount || 500,
         type: props.type || ""
-
     }
     const [newBounty, setNewBounty] = useState(initBounty)
     function handleChange(event) {
