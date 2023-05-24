@@ -13,39 +13,6 @@ mongoose.connect('mongodb://localhost:27017/bountydb',
      () => console.log('connected to database')
     )
 
-
-//         region: "US",
-//         name: "Bulbasaur",
-//         isLiving: true,
-//         amount: 2000,
-//         type: "grass", 
-//         _id: uuidv4()
-//     },
-//     {
-//         region: "Canada",
-//         name: "Charamander",
-//         isLiving: true,
-//         amount: 5000,
-//         type: "fire",
-//         _id: uuidv4()
-//     },
-//     {
-//         region: "USA",
-//         name: "houndour",
-//         isLiving: true,
-//         amount: 2000,
-//         type: "fire",
-//         _id: uuidv4()
-//     },
-//     {
-//         region: "Canada",
-//         name: "pikachu",
-//         isLiving: true,
-//         amount: 200,
-//         type: "electric",
-//         _id: uuidv4()
-//     }
-// ]
 //post one
 app.post('/bounty', (req, res, next) => {
     const newBounty = new Bounty(req.body)
@@ -68,6 +35,7 @@ app.get("/bounty", (req, res, next) => {
         return res.status(200).send(bounties)
     })
 })
+
 // // get one
 // app.get("/bounty/:bountyId", (req, res, next) => {
 //     const bountyId = req.params.bountyId
