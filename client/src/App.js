@@ -8,15 +8,18 @@ import './App.css';
 function App() {
   const[bountyArray, setBountyArray] = useState([])
   
+  // request all bounty objects from api 
   function getBounty() {
     axios.get("/bounty")
       .then(res => setBountyArray(res.data))
       .catch(err => console.log(err))
   }
+  // run getbounty on page render 
   useEffect(() => {
     getBounty()
   }, [])
 
+// add new bounty object to api 
   function addBounty(bountyObj) {
     console.log(bountyObj)
     axios.post("/bounty", bountyObj) 
@@ -25,18 +28,21 @@ function App() {
       })
       .catch(err => console.log(err))
   }
+// delete bounty object from api using bounty id 
   function deleteBounty(bountyId) {
     axios.delete(`/bounty/${bountyId}`)
       .then(res => setBountyArray(prevArray => prevArray.filter(bounty => bounty._id !== bountyId)
       ))
       .catch(err => console.log(err))
   }
+  // edit bounty ibject by bountyid
   function updateBounty(updates, bountyId) {
     console.log(updates)
     axios.put(`/bounty/${bountyId}`, updates)
       .then(res => setBountyArray(prevArray => prevArray.map(prev => prev._id !== bountyId ? prev : res.data)))
       .catch(err => console.log(err))
   }
+  // reset or filter objects by values 
   function handleFilter(e) {
     if (e.target.value === "reset") {
       getBounty()
@@ -47,6 +53,7 @@ function App() {
 
     }
   }
+  //map through objects to create Bounty cards 
   const bountyHTML = bountyArray.map(bounty => {
     return (
       <Bounty 
@@ -57,6 +64,8 @@ function App() {
         />
         )
       })
+      
+      //render 
       return (
         <div className="App">
         <AddBounty 
