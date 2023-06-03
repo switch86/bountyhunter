@@ -7,13 +7,12 @@ const Bounty = require("./models/bounty")
 app.use(express.json())
 app.use(morgan('dev'))
 
-
 // connect to Database
 mongoose.connect('mongodb://localhost:27017/bountydb', 
      () => console.log('connected to database')
     )
 
-//post one
+//post one bounty 
 app.post('/bounty', (req, res, next) => {
     const newBounty = new Bounty(req.body)
     newBounty.save((err, savedBounty) => {
